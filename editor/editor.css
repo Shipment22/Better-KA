@@ -1,0 +1,64 @@
+#editor-wraper {
+    margin: 5px;
+    padding: 5px;
+
+    height: 92vh;
+
+    border: solid 1px #aaa;
+    border-radius: 7px;
+}
+
+#editor-tabsbar {
+    height: 30px;
+
+    background-color: #111;
+}
+
+#editor-tabsbar .tab {
+    position: relative;
+    top: 3px;
+
+    margin-right: 3px;
+    padding: 4px;
+
+    height: 100%;
+
+    font-size: 16px;
+
+    background-color: #1fab54;
+
+    border-radius: 5px 5px 0 0;
+}
+
+#editor-addtab {
+    position: relative;
+    top: 3px;
+
+    padding: 1px;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    background-color: #333;
+
+    border-radius: 7px;
+}
+
+#editor-buttons {
+    position: absolute;
+    right: 25px;
+}
+
+#editor-buttons button {
+    padding: 5px;
+
+    background-color: #0d923f;
+    color:  #fff;
+
+    border: none;
+    border-radius:  3px;
+}
+
+#editor-buttons button:hover, #editor-tabsbar .tab:hover, #editor-addtab:hover {
+    background-color: #085e29!important;
+    cursor: pointer;
+}

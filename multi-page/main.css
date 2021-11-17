@@ -1,0 +1,38 @@
+body {
+    background-color: #222;
+    color: #fff;
+
+    font-family: sans-serif;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    padding: 5px;
+
+    background-color: #151515;
+}
+
+#main {
+    margin-top: 40px;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+::selection {
+    background-color:  #fff;
+    color: #222;
+}
