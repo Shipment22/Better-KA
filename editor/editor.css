@@ -27,7 +27,7 @@
 
     background-color: #1fab54;
 
-    border-radius: 5px 5px 0 0;
+    border-radius: 3px 3px 0 0;
 }
 
 #editor-addtab {
@@ -68,10 +68,38 @@
 
     width: 50%;
 }
+
 #editor {
     position: absolute;
-    top: 80px;
+    top: 77px;
     bottom: 26px;
     left: 15px;
-    right: 415px;
+    right: 615px;
+}
+
+#right-pane {
+    position: absolute;
+    top: 77px;
+    bottom: 26px;
+    right: 14px;
+
+    width: 600px;
+
+    border-left: 1px solid #ddd;
+}
+
+#output {
+    width: 99.8%;
+    height: 80%;
+
+    border: none;
+}
+
+#console {
+    margin-top: -5px;
+
+    width:  99.8%;
+    height: 19.5%;
+
+    border-top: 1px solid #ddd;
 }
