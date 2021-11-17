@@ -62,3 +62,16 @@
     background-color: #085e29!important;
     cursor: pointer;
 }
+
+#editor-container {
+    background: #000;
+
+    width: 50%;
+}
+#editor {
+    position: absolute;
+    top: 80px;
+    bottom: 26px;
+    left: 15px;
+    right: 415px;
+}
