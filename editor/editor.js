@@ -16,8 +16,10 @@ function setEditorSwitch() {
             editors[element.dataset.tab] = new EditSession(["<!DOCTYPE html>", "<html>", "\t<head>", "\t\t<meta charset = 'utf-8'>", "\t\t<title>New Webpage</title>", "\t</head>", "\t<body>", "\t\t", "\t</body>", "</html>"]);
         } else if(extension === "css") {
             editors[element.dataset.tab] = new EditSession(["* {", "\tmargin: 0;", "\tpadding: 0;", "}"]);
+        } else if(extension === "js") {
+            editors[element.dataset.tab] = new EditSession(["//javascript"]);
         } else {
-            editors[element.dataset.tab] = new EditSession("");
+            editors[element.dataset.tab] = new EditSession([""]);
         }
 
         editors[element.dataset.tab].setMode("ace/mode/" + extension); // set language mode depending on extension
@@ -38,3 +40,4 @@ updateEditors.observe(tabsCont, { childList: true });
 // initial file setup
 setEditorSwitch();
 editor.setSession(editors["index.html"]); // set the current tab
+

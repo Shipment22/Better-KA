@@ -1,17 +1,25 @@
 #editor-wraper {
-    margin: 5px;
-    padding: 5px;
-
-    height: 92vh;
+    position: absolute;
+    top: 55px;
+    bottom: 26px;
+    left: 15px;
+    right: 15px;
 
     border: solid 1px #aaa;
     border-radius: 7px;
 }
 
 #editor-tabsbar {
-    height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    padding: 5px;
 
     background-color: #111;
+
+    border-radius: 7px;
 }
 
 #editor-tabsbar .tab {
@@ -45,7 +53,8 @@
 
 #editor-buttons {
     position: absolute;
-    right: 25px;
+    top: 2px;
+    right: 5px;
 }
 
 #editor-buttons button {
@@ -55,7 +64,7 @@
     color:  #fff;
 
     border: none;
-    border-radius:  3px;
+    border-radius: 3px;
 }
 
 #editor-buttons button:hover, #editor-tabsbar .tab:hover, #editor-addtab:hover {
@@ -71,21 +80,23 @@
 
 #editor {
     position: absolute;
-    top: 77px;
-    bottom: 26px;
-    left: 15px;
-    right: 615px;
+    top: 34px;
+    bottom: 0px;
+    left: 0px;
+    right: 600px;
+
+    border-radius: 7px;
 }
 
 #right-pane {
     position: absolute;
-    top: 77px;
-    bottom: 26px;
-    right: 14px;
+    top: 34px;
+    bottom: 0px;
+    right: 0px;
 
     width: 600px;
 
-    border-left: 1px solid #ddd;
+    border-left: 1px solid #aaa;
 }
 
 #output {
@@ -101,5 +112,5 @@
     width:  99.8%;
     height: 19.5%;
 
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #aaa;
 }
