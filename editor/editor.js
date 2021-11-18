@@ -1,4 +1,21 @@
 const editor = ace.edit("editor");
+
+editor.setOptions({
+    fontSize: '18px',
+    enableBasicAutocompletion: true,
+    enableLiveAutocompletion: true,
+});
+
+editor.commands.addCommand({
+    name: 'myCommand',
+    bindKey: {win: 'Ctrl-Enter',  mac: 'Command-Enter'},
+    exec: function(editor) {
+        startOutput();
+    },
+    readOnly: true, 
+});
+
+
 editor.setTheme("ace/theme/monokai");
 
 const EditSession = require("ace/edit_session").EditSession; // get EditSession
