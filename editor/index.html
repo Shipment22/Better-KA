@@ -26,12 +26,12 @@
                     <span class="new-tab tab" data-tab="sketch.js">sketch.js</span>
                     <span class="new-tab tab" data-tab="style.css">style.css</span>
                 </span>
-                <span id="editor-addtab">+</span>
+                <span id="editor-addtab" onclick="addTab(prompt('Please enter a title for the new file.'));">+</span>
 
                 <span id="editor-buttons">
-                    <button>Stop</button>
-                    <button>Run</button>
-                    <button>Save</button>
+                    <button onclick="stopOutput();">Stop</button>
+                    <button onclick="startOutput();">Run</button>
+                    <button onclick="saveCode();">Save</button>
                 </span>
             </div>
             <div id="left-pane">
@@ -39,31 +39,19 @@
             </div>
 
             <div id="right-pane">
-                <iframe id="output" srcdoc="<h1>OUTPUT</h1>"></iframe>
+                <iframe id="output"></iframe>
                 <div id="console">CONSOLE</div>
             </div>
         </div>
     </main>
 
-    <section id="comments">
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+    <!-- <section id="about" class="align-center">
+        About this program: this program has no about :(
     </section>
+
+    <section id="comments" class="align-center">
+        QUESTIONS / TIPS AND THANKS
+    </section> -->
 
 </body>
     <script type="text/javascript" src="./ace/ace.js" charset="utf-8"></script>

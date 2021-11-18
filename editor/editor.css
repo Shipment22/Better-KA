@@ -5,7 +5,7 @@
     left: 15px;
     right: 15px;
 
-    border: solid 1px #aaa;
+    border: solid 1px #666;
     border-radius: 7px;
 }
 
@@ -27,9 +27,9 @@
     top: 3px;
 
     margin-right: 3px;
-    padding: 4px;
+    padding: 3px;
 
-    height: 100%;
+    width: 200px !important;
 
     font-size: 16px;
 
@@ -96,7 +96,7 @@
 
     width: 600px;
 
-    border-left: 1px solid #aaa;
+    border-left: 1px solid #777;
 }
 
 #output {
@@ -112,5 +112,10 @@
     width:  99.8%;
     height: 19.5%;
 
-    border-top: 1px solid #aaa;
+    border-top: 1px solid #777;
+}
+
+#about, #comments, #footer {
+    position: relative;
+    top: 98vh;
 }
