@@ -105,8 +105,6 @@ function startOutput() {
         }
     });
 
-    console.log(html)
-
     output.srcdoc = html;
 }
 
