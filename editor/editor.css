@@ -116,7 +116,8 @@
 }
 
 #console header {
-    background: #202020;
+    background: #eee;
+    color: #000;
 }
 
 #console-body {

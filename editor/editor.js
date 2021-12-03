@@ -9,7 +9,7 @@ editor.setOptions({
 
 editor.commands.addCommand({
 	name: 'Run',
-	bindKey: 'Shift-Enter',
+	bindKey: {win: 'Ctrl-Shift-Enter',  mac: 'Command-Shift-Enter'},
 	exec: function(editor) {
 		startOutput();
 	},
@@ -66,7 +66,7 @@ function setEditorSwitch() {
 			if(extension === "html") {
 				editors[element.dataset.tab] = new EditSession(["<!DOCTYPE html>", "<html>", "\t<head>", "\t\t<meta charset = 'utf-8'>", "\t\t<title>New Webpage</title>", "\t</head>", "\t<body>", "\t\t", "\t</body>", "</html>"]);
 			} else if(extension === "css") {
-				editors[element.dataset.tab] = new EditSession(["html,body {", "\tmargin: 0;", "\tpadding: 0;", "}"]);
+				editors[element.dataset.tab] = new EditSession(["html,body {", "\tmargin: 0;", "\tpadding: 0;",  "\t",  "\tcolor: #fff;",  "\tbackground-color: #222;",  "\t",  "\tfont-family: Sans-Serif;", "}"]);
 			} else {
 				editors[element.dataset.tab] = new EditSession([""]);
 			}
