@@ -31,7 +31,6 @@ editor.commands.addCommands([
 		bindKey : { win: 'Ctrl-Z', mac: 'Command-Z' },
 		exec : function(editor){
 			editor.session.getUndoManager().undo();
-			console.log('undo')
 		}
 	},
 	{
@@ -39,7 +38,6 @@ editor.commands.addCommands([
 		bindKey : { win: 'Ctrl-Shift-Z', mac: 'Command-Shift-Z' },
 		exec : function(editor){
 			editor.session.getUndoManager().redo();
-			console.log('redo')
 		}
 	}
 ]);
