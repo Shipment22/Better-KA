@@ -115,6 +115,29 @@
     border-top: 1px solid #777;
 }
 
+#console header {
+    background: #202020;
+}
+
+#console-body {
+    height: auto;
+    overflow: auto;
+
+    border-top: 1px solid #777;
+}
+
+#console-body .log {
+    color: #fff;
+}
+
+#console-body .error {
+    color: #f00;
+}
+
+#console-body .warn {
+    color: #fd0;
+}
+
 #about, #comments, #footer {
     position: relative;
     top: 98vh;

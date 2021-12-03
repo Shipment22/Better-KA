@@ -126,18 +126,16 @@ function stopOutput() {
 stopOutput();
 
 function startOutput() {
-	stopOutput();
-
 	let tabs = document.querySelectorAll('.tab');
 
 	let html = editors['index.html'].getValue();    // gets html code
-
+	output.srcdoc = html;
 	tabs.forEach(element => {
 		let name = element.dataset.tab;            // get name and extension
 		let extension = name.split('.').reverse()[0];
 
 		function r(replace, what) {
-			html = html.replaceAll(replace, what);
+			output.srcdoc = output.srcdoc.replaceAll(replace, what);
 		}
 
 		if (extension === 'css') {
@@ -151,10 +149,18 @@ function startOutput() {
 			console.error('unknown file extension');
 		}
 	});
-
-	output.srcdoc = html;
+	setTimeout(function() {
+		output.contentWindow.onerror = function(message, source, lineno, colno) {
+			consoleBody.innerHTML += `<div class='error' title="${new Date()}">${message} in srcdoc:${lineno}:${colno}</div>`;
+		};
+	}, 150);
 }
 
 function saveCode() {
 	// something goes here...
 }
+
+
+
+// /***** console *****/
+const consoleBody = document.querySelector('#console-body');
