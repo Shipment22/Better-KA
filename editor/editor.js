@@ -66,7 +66,7 @@ function setEditorSwitch() {
 			if(extension === "html") {
 				editors[element.dataset.tab] = new EditSession(["<!DOCTYPE html>", "<html>", "\t<head>", "\t\t<meta charset = 'utf-8'>", "\t\t<title>New Webpage</title>", "\t</head>", "\t<body>", "\t\t", "\t</body>", "</html>"]);
 			} else if(extension === "css") {
-				editors[element.dataset.tab] = new EditSession(["* {", "\tmargin: 0;", "\tpadding: 0;", "}"]);
+				editors[element.dataset.tab] = new EditSession(["html,body {", "\tmargin: 0;", "\tpadding: 0;", "}"]);
 			} else {
 				editors[element.dataset.tab] = new EditSession([""]);
 			}
