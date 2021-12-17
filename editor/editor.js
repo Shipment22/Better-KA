@@ -135,14 +135,18 @@ function startOutput() {
 		let extension = name.split('.').reverse()[0];
 
 		function r(replace, what) {
-			output.srcdoc = output.srcdoc.replaceAll(replace, what);
+			output.srcdoc = output.srcdoc.replace(new RegExp(replace, "gi"), what);
 		}
 
 		if (extension === 'css') {
-			r(`<link rel="stylesheet" type="text/css" href="${name}">`, `<style>${editors[name].getValue()}</style>`);
-			r(`<link type="text/css" rel="stylesheet" href="${name}">`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+rel\\s*=\\s*["']stylesheet["']\\s*type\\s*=\\s*["']text/css["']\\s*href\\s*=\\s*["']${name}["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+type\\s*=\\s*["']text/css["']\\s*rel\\s*=\\s*["']stylesheet["']\\s*href\\s*=\\s*["']${name}["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+href\\s*=\\s*["']${name}["']\\s*type\\s*=\\s*["']text/css["']\\s*rel\\s*=\\s*["']stylesheet["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+href\\s*=\\s*["']${name}["']\\s*type\\s*=\\s*["']text/css["']\\s*rel\\s*=\\s*["']stylesheet["']\\s*href\\s*=\\s*["']${name}["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+rel\\s*=\\s*["']stylesheet["']\\s*href\\s*=\\s*["']${name}["']\\s*type\\s*=\\s*["']text/css["']\\s*href\\s*=\\s*["']${name}["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+type\\s*=\\s*["']text/css["']\\s*href\\s*=\\s*["']${name}["']\\s*rel\\s*=\\s*["']stylesheet["']\\s*href\\s*=\\s*["']${name}["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
 		} else if (extension === 'js') {
-			r(`src="${name}">`, `>${editors[name].getValue()}`);
+			r(`\\s*src\\s*=\\s*["']${name}["']([^<>]*)>`, `$1>${editors[name].getValue()}`);
 		} else if (extension === 'html') {
 			// something goes here...
 		} else {
