@@ -80,6 +80,49 @@ function setEditorSwitch() {
 		element.onclick = event => {
 			editor.setSession(editors[element.dataset.tab]); // change the current edtor to the tab corresponding to the element clicked
 		};
+        element.oncontextmenu = event => {
+            event.preventDefault();
+            element.setAttribute("contenteditable", "true");
+
+            if(element.createTextRange) {
+                var range = element.createTextRange();
+                range.move('character', element.textContent.length);
+                range.select();
+            }
+            else {
+                if(element.selectionStart) {
+                    element.focus();
+                    element.setSelectionRange(element.textContent.length, element.textContent.length);
+                } else {
+                    element.focus();
+                }
+            }
+
+            element.onkeydown = event => {
+                if(event.keyCode !== 13) return;
+
+                event.preventDefault();
+
+                let editor = editors[element.dataset.tab];
+                editors[element.value] = editor;
+
+                delete editors[element.dataset.tab];
+
+                element.dataset.tab = element.value;
+
+                let selection = window.getSelection();
+                selection.removeAllRanges();
+
+                element.setAttribute("contenteditable", "false");
+            };
+
+            window.addEventListener("click", event => {
+                element.value = element.dataset.tab;
+                element.setAttribute("contenteditable", "false");
+            }, {
+                once: true
+            })
+        };
 
 		element.classList.remove("new-tab"); // remove new-tab class so the file isn't created again
 	});
@@ -135,14 +178,18 @@ function startOutput() {
 		let extension = name.split('.').reverse()[0];
 
 		function r(replace, what) {
-			output.srcdoc = output.srcdoc.replaceAll(replace, what);
+			output.srcdoc = output.srcdoc.replace(new RegExp(replace, "gi"), what);
 		}
 
 		if (extension === 'css') {
-			r(`<link rel="stylesheet" type="text/css" href="${name}">`, `<style>${editors[name].getValue()}</style>`);
-			r(`<link type="text/css" rel="stylesheet" href="${name}">`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+rel\\s*=\\s*["']stylesheet["']\\s*type\\s*=\\s*["']text/css["']\\s*href\\s*=\\s*["']${name}["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+type\\s*=\\s*["']text/css["']\\s*rel\\s*=\\s*["']stylesheet["']\\s*href\\s*=\\s*["']${name}["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+href\\s*=\\s*["']${name}["']\\s*type\\s*=\\s*["']text/css["']\\s*rel\\s*=\\s*["']stylesheet["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+href\\s*=\\s*["']${name}["']\\s*type\\s*=\\s*["']text/css["']\\s*rel\\s*=\\s*["']stylesheet["']\\s*href\\s*=\\s*["']${name}["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+rel\\s*=\\s*["']stylesheet["']\\s*href\\s*=\\s*["']${name}["']\\s*type\\s*=\\s*["']text/css["']\\s*href\\s*=\\s*["']${name}["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
+			r(`<link\\s+type\\s*=\\s*["']text/css["']\\s*href\\s*=\\s*["']${name}["']\\s*rel\\s*=\\s*["']stylesheet["']\\s*href\\s*=\\s*["']${name}["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
 		} else if (extension === 'js') {
-			r(`src="${name}">`, `>${editors[name].getValue()}`);
+			r(`\\s*src\\s*=\\s*["']${name}["']([^<>]*)>`, `$1>${editors[name].getValue()}`);
 		} else if (extension === 'html') {
 			// something goes here...
 		} else {
