@@ -16,15 +16,6 @@ editor.commands.addCommand({
 	readOnly: true, 
 });
 
-editor.commands.addCommand({
-	name: 'New Line',
-	bindKey: {win: 'Ctrl-Enter',  mac: 'Command-Enter'},
-	exec: function(editor) {
-		// new line making code goes here...
-	},
-	readOnly: true, 
-});
-
 editor.commands.addCommands([
 	{
 		name : 'undo',
