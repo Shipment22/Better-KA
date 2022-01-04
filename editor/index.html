@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="/Better-KA/multi-page/main.css">
+    <link rel="stylesheet" type="text/css" href="../multi-page/main.css">
     <link rel="stylesheet" type="text/css" href="./editor.css">
     <link rel="stylesheet" type="text/css" href="./ace/theme-monokai.css">
 
@@ -26,7 +26,7 @@
                     <span class="new-tab tab" data-tab="sketch.js">sketch.js</span>
                     <span class="new-tab tab" data-tab="style.css">style.css</span>
                 </span>
-                <span id="editor-addtab" onclick="addTab(prompt('Please enter a title for the new file.'));">+</span>
+                <span id="editor-addtab" onclick="let p = prompt('Please enter a title for the new file.'); if (p) { addTab(); }">+</span>
 
                 <span id="editor-buttons">
                     <button onclick="stopOutput();">Stop</button>
