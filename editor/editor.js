@@ -19,6 +19,30 @@ editor.commands.addCommand({
 	readOnly: true, 
 });
 
+// add resize font shortcuts
+editor.commands.addCommand({ 
+	name: 'Bigger Font',
+	bindKey: {win: 'Ctrl-=',  mac: 'Command-='},
+	exec: function(editor) {
+		let sz = editor.getFontSize()
+		let szNum = Number(sz.split('px')[0])
+		if (szNum >= 50) { return; } 
+		let newSz = (szNum + 2) + 'px'
+		editor.setFontSize(newSz)
+	}
+}, null);
+editor.commands.addCommand({ 
+	name: 'Smaller Font',
+	bindKey: {win: 'Ctrl--',  mac: 'Command--'},
+	exec: function(editor) {
+		let sz = editor.getFontSize()
+		let szNum = Number(sz.split('px')[0])
+		if (szNum <= 6) { return; } 
+		let newSz = (szNum - 2) + 'px'
+		editor.setFontSize(newSz)
+	}
+});
+
 // create undo manager
 var UndoManager = require("ace/undomanager").UndoManager;	
 editor.commands.addCommands([	// make undo and redo shortcuts
