@@ -1,13 +1,16 @@
 const editor = ace.edit("editor");
-var UndoManager = require("ace/undomanager").UndoManager;
+const consoleBody = document.querySelector('#console-body');
 
-editor.setOptions({
-	fontSize: '18px',
+// set some options
+editor.setOptions({		
+	fontSize: '14px',
 	enableBasicAutocompletion: true,
-	enableLiveAutocompletion: true,
+	enableLiveAutocompletion: true
 });
+editor.setTheme("ace/theme/monokai");
 
-editor.commands.addCommand({
+// add run shortcut
+editor.commands.addCommand({ 
 	name: 'Run',
 	bindKey: {win: 'Ctrl-Enter',  mac: 'Command-Enter'},
 	exec: function(editor) {
@@ -16,7 +19,9 @@ editor.commands.addCommand({
 	readOnly: true, 
 });
 
-editor.commands.addCommands([
+// create undo manager
+var UndoManager = require("ace/undomanager").UndoManager;	
+editor.commands.addCommands([	// make undo and redo shortcuts
 	{
 		name : 'undo',
 		bindKey : { win: 'Ctrl-Z', mac: 'Command-Z' },
@@ -33,8 +38,6 @@ editor.commands.addCommands([
 	}
 ]);
 
-
-editor.setTheme("ace/theme/monokai");
 
 const EditSession = require("ace/edit_session").EditSession; // get EditSession
 
@@ -63,7 +66,7 @@ function setEditorSwitch() {
 			}
 		}
 		
-		undoManagers[element.dataset.tab] = new UndoManager();
+		undoManagers[element.dataset.tab] = new UndoManager();	// create and set undo manager
 		editors[element.dataset.tab].setUndoManager(undoManagers[element.dataset.tab]);
 
 		editors[element.dataset.tab].setMode("ace/mode/" + extension); // set language mode depending on extension
@@ -117,18 +120,20 @@ function stopOutput() {
 stopOutput();
 
 function startOutput() {
-	let tabs = document.querySelectorAll('.tab');
+	let tabs = document.querySelectorAll('.tab'); 	// get tabs
 
 	let html = editors['index.html'].getValue();    // gets html code
 	output.srcdoc = html;
 	tabs.forEach(element => {
-		let name = element.dataset.tab;            // get name and extension
+		let name = element.dataset.tab;            	// get name and extension
 		let extension = name.split('.').reverse()[0];
 
+		// code shortener
 		function r(replace, what) {
-			output.srcdoc = output.srcdoc.replaceAll(replace, what);
+			output.srcdoc = output.srcdoc.replace(replace, what);
 		}
 
+		// loads css and js files
 		if (extension === 'css') {
 			r(`<link rel="stylesheet" type="text/css" href="${name}">`, `<style>${editors[name].getValue()}</style>`);
 			r(`<link type="text/css" rel="stylesheet" href="${name}">`, `<style>${editors[name].getValue()}</style>`);
@@ -136,11 +141,14 @@ function startOutput() {
 			r(`src="${name}">`, `>${editors[name].getValue()}`);
 		} else if (extension === 'html') {
 			// something goes here...
+			console.log('linking to local html files comming soon...')
 		} else {
 			console.error('unknown file extension');
 		}
 	});
+
 	setTimeout(function() {
+		// (hopefully/sometimes/maybe) puts any errors in the console
 		output.contentWindow.onerror = function(message, source, lineno, colno) {
 			consoleBody.innerHTML += `<div class='error' title="${new Date()}">${message} in srcdoc:${lineno}:${colno}</div>`;
 		};
@@ -151,7 +159,3 @@ function saveCode() {
 	// something goes here...
 }
 
-
-
-// /***** console *****/
-const consoleBody = document.querySelector('#console-body');
