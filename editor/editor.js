@@ -9,7 +9,7 @@ editor.setOptions({
 
 editor.commands.addCommand({
 	name: 'Run',
-	bindKey: {win: 'Ctrl-Shift-Enter',  mac: 'Command-Shift-Enter'},
+	bindKey: {win: 'Ctrl-Enter',  mac: 'Command-Enter'},
 	exec: function(editor) {
 		startOutput();
 	},
