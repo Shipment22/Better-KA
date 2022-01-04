@@ -173,11 +173,7 @@ function startOutput() {
 
 		// code shortener
 		function r(replace, what) {
-<<<<<<< HEAD
-			output.srcdoc = output.srcdoc.replace(replace, what);
-=======
 			output.srcdoc = output.srcdoc.replace(new RegExp(replace, "gi"), what);
->>>>>>> 4055e714a7cd41d96fb38bbd62a3eb4dbf867abe
 		}
 
 		// loads css and js files
