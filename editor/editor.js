@@ -30,7 +30,7 @@ editor.commands.addCommand({
 		let newSz = (szNum + 2) + 'px'
 		editor.setFontSize(newSz)
 	}
-}, null);
+});
 editor.commands.addCommand({ 
 	name: 'Smaller Font',
 	bindKey: {win: 'Ctrl--',  mac: 'Command--'},
