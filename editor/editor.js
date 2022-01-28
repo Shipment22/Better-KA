@@ -26,7 +26,7 @@ editor.commands.addCommand({
 	exec: function(editor) {
 		let sz = editor.getFontSize()
 		let szNum = Number(sz.split('px')[0])
-		if (szNum >= 50) { return; } 
+		if (szNum >= 70) { return; } 
 		let newSz = (szNum + 2) + 'px'
 		editor.setFontSize(newSz)
 	}
@@ -186,10 +186,10 @@ function stopOutput() {
 }
 stopOutput();
 
-function startOutput() {
+function startOutput(file = 'index.html') {
 	let tabs = document.querySelectorAll('.tab'); 	// get tabs
 
-	let html = editors['index.html'].getValue();    // gets html code
+	let html = editors[file].getValue();    // gets html code
 	output.srcdoc = html;
 	tabs.forEach(element => {
 		let name = element.dataset.tab;            	// get name and extension
@@ -210,9 +210,8 @@ function startOutput() {
 			r(`<link\\s+type\\s*=\\s*["']text/css["']\\s*href\\s*=\\s*["']${name}["']\\s*rel\\s*=\\s*["']stylesheet["']\\s*href\\s*=\\s*["']${name}["']\\s*>`, `<style>${editors[name].getValue()}</style>`);
 		} else if (extension === 'js') {
 			r(`\\s*src\\s*=\\s*["']${name}["']([^<>]*)>`, `$1>${editors[name].getValue()}`);
-		} else if (extension === 'html') {
-			// something goes here...
-			console.log('linking to local html files comming soon...')
+		} else if (extension === 'html' || extension === 'htm') {
+			r(`\\s*href\\s*=\\s*["']${name}`, ` href="javascript:window.sendEditorTo = '${name}'`);
 		} else {
 			console.error('unknown file extension');
 		}
@@ -225,6 +224,12 @@ function startOutput() {
 		};
 	}, 150);
 }
+
+setInterval(() => {
+	if (output.contentWindow.sendEditorTo) {
+		console.log('%c YAYAYAY', 'background: deepskyblue; color: white;')
+	}
+}, 50);
 
 function saveCode() {
 	// something goes here...

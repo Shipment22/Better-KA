@@ -1,0 +1,50 @@
+
+$main-background: #272727;
+$main-color: #fff;
+
+$sidebar-icon-width: clamp(30px, 90px, 3.6vw);
+
+body {
+	background-color: $main-background;
+	color: $main-color;
+	font-family: sans-serif;
+}
+
+#sidebar {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	padding-right: 5px;
+	background-color: #222;
+	border-right: solid 1px #000;
+
+	a {
+		height: $sidebar-icon-width;
+
+		img {
+			image-rendering: crisp-edges;
+			width: $sidebar-icon-width;
+			margin-top: 5px;
+			margin-bottom: 0;
+			margin-left: 4px;
+			margin-right: 0;
+		}
+
+		span {
+			position: absolute;
+			display: none;
+			padding: 5px;
+			background: #222;
+			color: $main-color;
+			border: solid 1px #000;
+			border-radius: 5px;
+		}
+	}
+
+	a:hover span {
+		display: inline;
+	}
+}

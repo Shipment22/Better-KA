@@ -1,145 +1,36 @@
-#editor-wraper {
-    position: absolute;
-    top: 55px;
-    bottom: 26px;
-    left: 15px;
-    right: 15px;
+body {
+  background-color: #272727;
+  color: #fff;
+  font-family: sans-serif; }
 
-    border: solid 1px #666;
-    border-radius: 7px;
-}
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  padding-right: 5px;
+  background-color: #222;
+  border-right: solid 1px #000; }
+  #sidebar a {
+    height: clamp(30px, 90px, 3.6vw); }
+    #sidebar a img {
+      image-rendering: crisp-edges;
+      width: clamp(30px, 90px, 3.6vw);
+      margin-top: 5px;
+      margin-bottom: 0;
+      margin-left: 4px;
+      margin-right: 0; }
+    #sidebar a span {
+      position: absolute;
+      display: none;
+      padding: 5px;
+      background: #222;
+      color: #fff;
+      border: solid 1px #000;
+      border-radius: 5px; }
+  #sidebar a:hover span {
+    display: inline; }
 
-#editor-tabsbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    padding: 5px;
-
-    background-color: #111;
-
-    border-radius: 7px;
-}
-
-#editor-tabsbar .tab {
-    position: relative;
-    top: 3px;
-
-    margin-right: 3px;
-    padding: 3px;
-
-    width: 200px !important;
-
-    font-size: 16px;
-
-    background-color: #1fab54;
-
-    border-radius: 3px 3px 0 0;
-}
-
-#editor-addtab {
-    position: relative;
-    top: 3px;
-
-    padding: 1px;
-    padding-left: 8px;
-    padding-right: 8px;
-
-    background-color: #333;
-
-    border-radius: 7px;
-}
-
-#editor-buttons {
-    position: absolute;
-    top: 2px;
-    right: 5px;
-}
-
-#editor-buttons button {
-    padding: 5px;
-
-    background-color: #0d923f;
-    color:  #fff;
-
-    border: none;
-    border-radius: 3px;
-}
-
-#editor-buttons button:hover, #editor-tabsbar .tab:hover, #editor-addtab:hover {
-    background-color: #085e29!important;
-    cursor: pointer;
-}
-
-#editor-container {
-    background: #000;
-
-    width: 50%;
-}
-
-#editor {
-    position: absolute;
-    top: 34px;
-    bottom: 0px;
-    left: 0px;
-    right: 600px;
-
-    border-radius: 7px;
-}
-
-#right-pane {
-    position: absolute;
-    top: 34px;
-    bottom: 0px;
-    right: 0px;
-
-    width: 600px;
-
-    border-left: 1px solid #777;
-}
-
-#output {
-    width: 99.8%;
-    height: 80%;
-
-    border: none;
-}
-
-#console {
-    margin-top: -5px;
-
-    width:  99.8%;
-    height: 19.5%;
-
-    border-top: 1px solid #777;
-}
-
-#console header {
-    background: #eee;
-    color: #000;
-}
-
-#console-body {
-    height: auto;
-    overflow: auto;
-
-    border-top: 1px solid #777;
-}
-
-#console-body .log {
-    color: #fff;
-}
-
-#console-body .error {
-    color: #f00;
-}
-
-#console-body .warn {
-    color: #fd0;
-}
-
-#about, #comments, #footer {
-    position: relative;
-    top: 98vh;
-}
+/*# sourceMappingURL=editor.css.map */
