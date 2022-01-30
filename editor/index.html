@@ -18,14 +18,15 @@
             <a href="../">
                 <img src="../assets/icons/editor-sidebar/home.png"><span>Home</span>
             </a>
+            <a href="javascript:startOutput()">
+                <img src="../assets/icons/editor-sidebar/run.png"><span>Run</span>
+            </a>
+            <a href="javascript:stopOutput()">
+                <img src="../assets/icons/editor-sidebar/stop.png"><span>Stop</span>
+            </a>
             <a href="javascript:void(0)">
                 <img src="../assets/icons/editor-sidebar/files.png"><span>Files</span>
             </a>
-            <a href="javascript:void(0)">
-                <img src="../assets/icons/editor-sidebar/snippets.png"><span>Snipets</span>
-            </a>
-            <a href="../browser">
-                <img src="../assets/icons/editor-sidebar/browse.png"><span>Browse</span>
             </a>
         </nav>
 
@@ -45,6 +46,7 @@
     </div>
 
     <div id="output-wraper">
+        <p style="margin: 50px;">OUTPUT IS NOT RUNNING</p>
         <iframe id="output"></iframe>
     </div>
 
