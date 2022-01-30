@@ -82,9 +82,10 @@ function setEditorSwitch() {
         <title></title>
       
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="sketch.js"></script>
    </head>
    <body>
-   
+       
    </body>
 </html>`;
 
