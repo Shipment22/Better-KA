@@ -1,10 +1,14 @@
 
 $main-background: #272727;
 $main-color: #fff;
-
-$sidebar-icon-width: clamp(30px, 90px, 3.6vw);
+$sidebar-background: #222;
 
 body {
+	display: flex;
+
+	margin: 0;
+	padding: 0;
+
 	background-color: $main-background;
 	color: $main-color;
 	font-family: sans-serif;
@@ -12,39 +16,106 @@ body {
 
 #sidebar {
 	display: flex;
-	flex-direction: column;
-	position: absolute;
-	left: 0;
-	top: 0;
-	bottom: 0;
+	flex-direction: row;
+
 	padding-right: 5px;
-	background-color: #222;
+
+	width: 15%;
+
+	background-color: $sidebar-background;
 	border-right: solid 1px #000;
 
-	a {
-		height: $sidebar-icon-width;
+	#sidebar-right {
+		display: flex;
+		flex-direction: column;
 
-		img {
-			image-rendering: crisp-edges;
-			width: $sidebar-icon-width;
-			margin-top: 5px;
-			margin-bottom: 0;
-			margin-left: 4px;
-			margin-right: 0;
-		}
+		margin-left: 0.3rem;
 
-		span {
-			position: absolute;
-			display: none;
-			padding: 5px;
-			background: #222;
+		.tab {
+			width: 100%;
+
+			padding: 0.3rem;
+			margin-bottom: 0.2rem;
+
+			background-color: $main-background;
 			color: $main-color;
-			border: solid 1px #000;
-			border-radius: 5px;
+
+			border: none;
 		}
 	}
 
-	a:hover span {
-		display: inline;
+	#main-nav {
+		display: flex;
+		flex-direction: column;
+
+		width: 20%;
+
+		a {
+			height: auto;
+
+			img {
+				image-rendering: crisp-edges;
+				width: 90%;
+				margin: 10%;
+				margin-top: 2%;
+				margin-bottom: 2%;
+			}
+
+			span {
+				position: absolute;
+
+				transform: translate(3.8vw, -3em);
+
+				display: none;
+				padding: 5px;
+				background: $sidebar-background;
+				color: $main-color;
+				border: solid 1px #000;
+				border-radius: 5px;
+
+				z-index: 11;
+			}
+		}
+
+		a:hover span {
+			display: inline;
+		}
+	}
+}
+
+#editor-wraper {
+    position: relative;
+
+
+    width: 49.6%;
+    height: 100vh;
+
+    #editor {
+	    position: absolute;
+	    top: 0px;
+	    bottom: 0px;
+	    left: 0px;
+	    right: 0px;
+	}
+}
+
+
+#output-wraper {
+	position: relative;
+
+	width: 35%;
+	height: 100vh;
+
+	#output {
+	    position: absolute;
+	    top: 0px;
+	    left: 0px;
+
+		width: 100%;
+		height: 100%;
+
+		border: none;
+
+		background: #000;
 	}
 }

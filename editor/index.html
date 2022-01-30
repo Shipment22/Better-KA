@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="../multi-page/main.css">
     <link rel="stylesheet" type="text/css" href="./editor.css">
+
     <link rel="stylesheet" type="text/css" href="./ace/theme-monokai.css">
 
     <link rel="icon" type="img/ico" href="../assets/favicon.ico">
@@ -13,18 +14,38 @@
 </head>
 <body>
     <div id="sidebar">
-        <a href="../">
-            <img src="../assets/icons/editor-sidebar/home.png"><span>Home</span>
-        </a>
-        <a href="javascript:void(0)">
-            <img src="../assets/icons/editor-sidebar/files.png"><span>Files</span>
-        </a>
-        <a href="javascript:void(0)">
-            <img src="../assets/icons/editor-sidebar/snippets.png"><span>Snipets</span>
-        </a>
-        <a href="../browser">
-            <img src="../assets/icons/editor-sidebar/browse.png"><span>Browse</span>
-        </a>
+        <nav id="main-nav" role="main navigation">
+            <a href="../">
+                <img src="../assets/icons/editor-sidebar/home.png"><span>Home</span>
+            </a>
+            <a href="javascript:void(0)">
+                <img src="../assets/icons/editor-sidebar/files.png"><span>Files</span>
+            </a>
+            <a href="javascript:void(0)">
+                <img src="../assets/icons/editor-sidebar/snippets.png"><span>Snipets</span>
+            </a>
+            <a href="../browser">
+                <img src="../assets/icons/editor-sidebar/browse.png"><span>Browse</span>
+            </a>
+        </nav>
+
+        <div id="sidebar-right">
+            <div>
+                <nav role="tab navigation" id="tabs">
+                    <button class="new-tab tab" data-tab="index.html">index.html</button>
+                    <button class="new-tab tab" data-tab="sketch.js">sketch.js</button>
+                    <button class="new-tab tab" data-tab="style.css">style.css</button>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div id="editor-wraper">
+        <div id="editor"></div>
+    </div>
+
+    <div id="output-wraper">
+        <iframe id="output"></iframe>
     </div>
 
     <!-- <main id="main">
@@ -59,8 +80,7 @@
     </main> -->
 
 </body>
-    <!-- <script type="text/javascript" src="./ace/ace.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./ace/ace.js" charset="utf-8"></script>
     <script type="text/javascript" src="./ace/ext-language_tools.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./ace/keybinding-sublime.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./editor.js"></script> -->
+    <script type="text/javascript" src="./editor.js"></script>
 </html>
