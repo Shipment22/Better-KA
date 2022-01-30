@@ -50,6 +50,10 @@ body {
 
 		width: 20%;
 
+		padding-right: 5px;
+
+		background-color: #1b1b1b;
+
 		a {
 			height: auto;
 
@@ -106,6 +110,8 @@ body {
 	width: 35%;
 	height: 100vh;
 
+	background: #171717;
+
 	#output {
 	    position: absolute;
 	    top: 0px;
@@ -115,7 +121,5 @@ body {
 		height: 100%;
 
 		border: none;
-
-		background: #000;
 	}
 }
